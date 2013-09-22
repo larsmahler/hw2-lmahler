@@ -22,49 +22,57 @@
 <!-- Descriptor for TestElementAnnotator. -->
 <analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
 	<frameworkImplementation>org.apache.uima.java</frameworkImplementation>
-	<primitive>false</primitive>
-	<delegateAnalysisEngineSpecifiers>
-    <delegateAnalysisEngine key="TestElementAnnotatorDescriptor">
-      <import name="descriptors.TestElementAnnotatorDescriptor"/>
-    </delegateAnalysisEngine>
-    <delegateAnalysisEngine key="TokenAnnotatorDescriptor">
-      <import name="descriptors.TokenAnnotatorDescriptor"/>
-    </delegateAnalysisEngine>
-  <delegateAnalysisEngine key="NgramAnnotatorDescriptor">
-      <import name="descriptors.NgramAnnotatorDescriptor"/>
-    </delegateAnalysisEngine>
-  </delegateAnalysisEngineSpecifiers>
-  <analysisEngineMetaData>
-		<name>HW2 - Aggregate Analysis Engine</name>
-		<description>This is the aggregate analysis engine for the HW#2 Question Answering pipeline. For details regarding the flow, see the "Aggregate" tab. For details regarding any individual AE, please see the notes contained within that AE's descriptor.</description>
+	<primitive>true</primitive>
+	<annotatorImplementationName>qa.NgramAnnotator</annotatorImplementationName>
+
+	<analysisEngineMetaData>
+		<name>NgramAnnotatorDescriptor</name>
+		<description>The NgramAnnotator converts sequences of Token annotations into Ngrams. A parameter allows the user to specify the degree  / cardinality of the ngram. For example: 1 (unigram), 2 (bigram), 3 (trigram), etc.</description>
 		<version>1.0</version>
 		<vendor>Lars Mahler</vendor>
 		
-		<configurationParameters searchStrategy="language_fallback"/>
-    <configurationParameterSettings/>
-    <flowConstraints>
-      <fixedFlow>
-        <node>TestElementAnnotatorDescriptor</node>
-        <node>TokenAnnotatorDescriptor</node>
-      <node>NgramAnnotatorDescriptor</node>
-      </fixedFlow>
-    </flowConstraints>
+		<configurationParameters>
+      <configurationParameter>
+        <name>NgramOrder</name>
+        <description>Order (or cardinality) of ngram: 1 (unigram), 2 (bigram), 3 (trigram), etc. Multiple values may be selected, thus creating unigrams, bigrams, trigrams, and higher-order ngrams simultaneously.</description>
+        <type>Integer</type>
+        <multiValued>true</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+    </configurationParameters>
+    <configurationParameterSettings>
+      <nameValuePair>
+        <name>NgramOrder</name>
+        <value>
+          <array>
+            <integer>1</integer>
+            <integer>2</integer>
+            <integer>3</integer>
+          </array>
+        </value>
+      </nameValuePair>
+    </configurationParameterSettings>
+    <!-- TypeSystem Definition -->
+		<typeSystemDescription>
+			<imports>
+				<import location="deiis_types.xml"/>
+			</imports>
+		</typeSystemDescription>
+		
+		<typePriorities/>
     <fsIndexCollection/>
     <!-- Capabilities: Inputs, Outputs, and Preconditions -->
 		<capabilities>
 			<capability>
-        <inputs/>
-        <outputs>
+				<inputs>
           <type allAnnotatorFeatures="true">edu.cmu.deiis.types.Token</type>
-          <type allAnnotatorFeatures="true">edu.cmu.deiis.types.Question</type>
+        </inputs>
+				<outputs>
           <type allAnnotatorFeatures="true">edu.cmu.deiis.types.NGram</type>
-          <type allAnnotatorFeatures="true">edu.cmu.deiis.types.AnswerScore</type>
-          <type allAnnotatorFeatures="true">edu.cmu.deiis.types.Answer</type>
-          <type allAnnotatorFeatures="true">edu.cmu.deiis.types.Annotation</type>
         </outputs>
-        <languagesSupported/>
+			<languagesSupported/>
       </capability>
-    </capabilities>
+		</capabilities>
 		<operationalProperties>
 			<modifiesCas>true</modifiesCas>
 			<multipleDeploymentAllowed>true</multipleDeploymentAllowed>

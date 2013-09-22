@@ -5,18 +5,12 @@ package qa;
  */
 
 import java.io.StringReader;
-import java.text.BreakIterator;
-import java.text.ParsePosition;
 import java.util.Iterator;
-import java.util.Locale;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.FSIndex;
 import org.apache.uima.jcas.JCas;
-import org.apache.uima.tutorial.RoomNumber;
 
 import edu.cmu.deiis.types.*;
 import edu.stanford.nlp.ling.Word;

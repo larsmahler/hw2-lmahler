@@ -11,8 +11,8 @@ import org.apache.uima.jcas.cas.FSArray;
 
 
 /** 
- * Updated by JCasGen Sat Sep 21 20:09:44 EDT 2013
- * XML source: C:/Users/Lars/git/hw2-lmahler/hw2-lmahler/src/main/resources/descriptors/hw2-lmahler-aae.xml
+ * Updated by JCasGen Sun Sep 22 18:30:16 EDT 2013
+ * XML source: C:/Users/Lars/git/hw2-lmahler/hw2-lmahler/src/main/resources/descriptors/deiis_types.xml
  * @generated */
 public class NGram extends Annotation {
   /** @generated
@@ -112,6 +112,42 @@ public class NGram extends Annotation {
     if (NGram_Type.featOkTst && ((NGram_Type)jcasType).casFeat_elementType == null)
       jcasType.jcas.throwFeatMissing("elementType", "edu.cmu.deiis.types.NGram");
     jcasType.ll_cas.ll_setStringValue(addr, ((NGram_Type)jcasType).casFeatCode_elementType, v);}    
+   
+    
+  //*--------------*
+  //* Feature: ngramOrder
+
+  /** getter for ngramOrder - gets Order / degree of ngram: 1 (unigram), 2 (bigram), 3 (trigram), and so on.
+   * @generated */
+  public int getNgramOrder() {
+    if (NGram_Type.featOkTst && ((NGram_Type)jcasType).casFeat_ngramOrder == null)
+      jcasType.jcas.throwFeatMissing("ngramOrder", "edu.cmu.deiis.types.NGram");
+    return jcasType.ll_cas.ll_getIntValue(addr, ((NGram_Type)jcasType).casFeatCode_ngramOrder);}
+    
+  /** setter for ngramOrder - sets Order / degree of ngram: 1 (unigram), 2 (bigram), 3 (trigram), and so on. 
+   * @generated */
+  public void setNgramOrder(int v) {
+    if (NGram_Type.featOkTst && ((NGram_Type)jcasType).casFeat_ngramOrder == null)
+      jcasType.jcas.throwFeatMissing("ngramOrder", "edu.cmu.deiis.types.NGram");
+    jcasType.ll_cas.ll_setIntValue(addr, ((NGram_Type)jcasType).casFeatCode_ngramOrder, v);}    
+   
+    
+  //*--------------*
+  //* Feature: source
+
+  /** getter for source - gets Describes the source of the NGram (i.e. was the NGram created from Question text or Answer text?).
+   * @generated */
+  public String getSource() {
+    if (NGram_Type.featOkTst && ((NGram_Type)jcasType).casFeat_source == null)
+      jcasType.jcas.throwFeatMissing("source", "edu.cmu.deiis.types.NGram");
+    return jcasType.ll_cas.ll_getStringValue(addr, ((NGram_Type)jcasType).casFeatCode_source);}
+    
+  /** setter for source - sets Describes the source of the NGram (i.e. was the NGram created from Question text or Answer text?). 
+   * @generated */
+  public void setSource(String v) {
+    if (NGram_Type.featOkTst && ((NGram_Type)jcasType).casFeat_source == null)
+      jcasType.jcas.throwFeatMissing("source", "edu.cmu.deiis.types.NGram");
+    jcasType.ll_cas.ll_setStringValue(addr, ((NGram_Type)jcasType).casFeatCode_source, v);}    
   }
 
     

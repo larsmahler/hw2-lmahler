@@ -13,7 +13,7 @@ import org.apache.uima.cas.impl.FeatureImpl;
 import org.apache.uima.cas.Feature;
 
 /** 
- * Updated by JCasGen Sat Sep 21 20:09:44 EDT 2013
+ * Updated by JCasGen Sun Sep 22 18:30:16 EDT 2013
  * @generated */
 public class NGram_Type extends Annotation_Type {
   /** @generated */
@@ -97,6 +97,42 @@ public class NGram_Type extends Annotation_Type {
     ll_cas.ll_setStringValue(addr, casFeatCode_elementType, v);}
     
   
+ 
+  /** @generated */
+  final Feature casFeat_ngramOrder;
+  /** @generated */
+  final int     casFeatCode_ngramOrder;
+  /** @generated */ 
+  public int getNgramOrder(int addr) {
+        if (featOkTst && casFeat_ngramOrder == null)
+      jcas.throwFeatMissing("ngramOrder", "edu.cmu.deiis.types.NGram");
+    return ll_cas.ll_getIntValue(addr, casFeatCode_ngramOrder);
+  }
+  /** @generated */    
+  public void setNgramOrder(int addr, int v) {
+        if (featOkTst && casFeat_ngramOrder == null)
+      jcas.throwFeatMissing("ngramOrder", "edu.cmu.deiis.types.NGram");
+    ll_cas.ll_setIntValue(addr, casFeatCode_ngramOrder, v);}
+    
+  
+ 
+  /** @generated */
+  final Feature casFeat_source;
+  /** @generated */
+  final int     casFeatCode_source;
+  /** @generated */ 
+  public String getSource(int addr) {
+        if (featOkTst && casFeat_source == null)
+      jcas.throwFeatMissing("source", "edu.cmu.deiis.types.NGram");
+    return ll_cas.ll_getStringValue(addr, casFeatCode_source);
+  }
+  /** @generated */    
+  public void setSource(int addr, String v) {
+        if (featOkTst && casFeat_source == null)
+      jcas.throwFeatMissing("source", "edu.cmu.deiis.types.NGram");
+    ll_cas.ll_setStringValue(addr, casFeatCode_source, v);}
+    
+  
 
 
 
@@ -113,6 +149,14 @@ public class NGram_Type extends Annotation_Type {
  
     casFeat_elementType = jcas.getRequiredFeatureDE(casType, "elementType", "uima.cas.String", featOkTst);
     casFeatCode_elementType  = (null == casFeat_elementType) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_elementType).getCode();
+
+ 
+    casFeat_ngramOrder = jcas.getRequiredFeatureDE(casType, "ngramOrder", "uima.cas.Integer", featOkTst);
+    casFeatCode_ngramOrder  = (null == casFeat_ngramOrder) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_ngramOrder).getCode();
+
+ 
+    casFeat_source = jcas.getRequiredFeatureDE(casType, "source", "uima.cas.String", featOkTst);
+    casFeatCode_source  = (null == casFeat_source) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_source).getCode();
 
   }
 }
