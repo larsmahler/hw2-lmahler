@@ -10,8 +10,8 @@ import org.apache.uima.jcas.cas.TOP_Type;
 
 
 /** 
- * Updated by JCasGen Wed Sep 11 13:44:28 EDT 2013
- * XML source: /home/diwang/ur-workspace/deiis-f13-homework/src/main/resources/desc/deiis_types.xml
+ * Updated by JCasGen Sat Sep 21 20:09:44 EDT 2013
+ * XML source: C:/Users/Lars/git/hw2-lmahler/hw2-lmahler/src/main/resources/descriptors/hw2-lmahler-aae.xml
  * @generated */
 public class Question extends Annotation {
   /** @generated

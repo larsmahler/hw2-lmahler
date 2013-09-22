@@ -4,25 +4,38 @@ package qa;
  * Put notes here.
  */
 
-import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
-import org.apache.uima.jcas.JCas;
+import java.io.StringReader;
+import java.util.Iterator;
 
+import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
+import org.apache.uima.cas.FSIndex;
+import org.apache.uima.jcas.JCas;
+import org.apache.uima.tutorial.RoomNumber;
+
+import edu.stanford.nlp.ling.Word;
+import edu.stanford.nlp.objectbank.TokenizerFactory;
+import edu.stanford.nlp.process.PTBTokenizer.PTBTokenizerFactory;
+import edu.stanford.nlp.process.Tokenizer;
 import edu.cmu.deiis.types.*;
 
 /**
- * The TestElementAnnotator annotates each input document. 
- * For each line of the the input file, it determines if that line is a Question, or an Answer, 
- * and annotates the span accordingly. 
- * For each Answer annotation, the TestElementAnnotator will set its isCorrect feature to yes / no (1/0)
- * depending on whether it is a correct answer or not.
+ * The TokenAnnotator annotates each token within each sentence (Question or Answer). 
  */
-public class TestElementAnnotator extends JCasAnnotator_ImplBase {
+public class TokenAnnotator extends JCasAnnotator_ImplBase {
 
   /**
    * @see JCasAnnotator_ImplBase#process(JCas)
    */
   public void process(JCas aJCas) {
     // get document text
+    FSIndex qIndex = aJCas.getAnnotationIndex(Question.type);
+    Iterator qIter = qIndex.iterator();
+    while (qIter.hasNext()) {
+      Question question = (Question) qIter.next();
+      TokenizerFactory<Word> factory = PTBTokenizerFactory.newTokenizerFactory();
+      Tokenizer<Word> tokenizer = factory.getTokenizer(new StringReader(question.getCoveredText()));
+      String[tokens] = tokenizer.tokenize();
+    }
     String docText = aJCas.getDocumentText();
     String[] lines = docText.split(System.getProperty("line.separator"));
     for( int i = 0; i < lines.length; i++)
