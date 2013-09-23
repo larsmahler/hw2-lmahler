@@ -10,8 +10,8 @@ import org.apache.uima.jcas.cas.TOP_Type;
 
 
 /** 
- * Updated by JCasGen Sun Sep 22 20:48:51 EDT 2013
- * XML source: C:/Users/Lars/git/hw2-lmahler/hw2-lmahler/src/main/resources/descriptors/hw2-lmahler-aae.xml
+ * Updated by JCasGen Mon Sep 23 00:12:07 EDT 2013
+ * XML source: C:/Users/Lars/git/hw2-lmahler/hw2-lmahler/src/main/resources/descriptors/deiis_types.xml
  * @generated */
 public class Answer extends Annotation {
   /** @generated
@@ -64,14 +64,14 @@ public class Answer extends Annotation {
   //*--------------*
   //* Feature: isCorrect
 
-  /** getter for isCorrect - gets 
+  /** getter for isCorrect - gets Flag that indicates whether this Answer is correct or not, based upon the original text file.
    * @generated */
   public boolean getIsCorrect() {
     if (Answer_Type.featOkTst && ((Answer_Type)jcasType).casFeat_isCorrect == null)
       jcasType.jcas.throwFeatMissing("isCorrect", "edu.cmu.deiis.types.Answer");
     return jcasType.ll_cas.ll_getBooleanValue(addr, ((Answer_Type)jcasType).casFeatCode_isCorrect);}
     
-  /** setter for isCorrect - sets  
+  /** setter for isCorrect - sets Flag that indicates whether this Answer is correct or not, based upon the original text file. 
    * @generated */
   public void setIsCorrect(boolean v) {
     if (Answer_Type.featOkTst && ((Answer_Type)jcasType).casFeat_isCorrect == null)

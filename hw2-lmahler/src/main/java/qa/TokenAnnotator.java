@@ -1,7 +1,8 @@
 package qa;
 
 /*
- * Put notes here.
+ * The TokenAnnotator converts each Question and Answer annotation into a set of Token annotations.
+ * The Token annotations are then used in downstream processing.
  */
 
 import java.io.StringReader;
@@ -19,7 +20,8 @@ import edu.stanford.nlp.process.Tokenizer;
 import edu.stanford.nlp.process.PTBTokenizer.PTBTokenizerFactory;
 
 /**
- * The TokenAnnotator annotates each token within each sentence (Question or Answer). 
+ * The TokenAnnotator converts each Question and Answer annotation into a set of Token annotations.
+ * The Token annotations are then used in downstream processing.
  */
 public class TokenAnnotator extends JCasAnnotator_ImplBase {
 
@@ -33,7 +35,7 @@ public class TokenAnnotator extends JCasAnnotator_ImplBase {
     Tokenizer<Word> tokenizer = factory.getTokenizer(new StringReader(aJCas.getDocumentText()));
     while (tokenizer.hasNext()) {
       Word w = tokenizer.next();
-      
+
       FSIndex qIndex = aJCas.getAnnotationIndex(Question.type);
       Iterator qIter = qIndex.iterator();
       while (qIter.hasNext()) {
@@ -44,7 +46,7 @@ public class TokenAnnotator extends JCasAnnotator_ImplBase {
           annotation.setEnd(w.endPosition());
           annotation.setCasProcessorId("TokenAnnotator");
           annotation.setConfidence(1.0);
-          annotation.addToIndexes();          
+          annotation.addToIndexes();
         }
       }
 
@@ -58,11 +60,10 @@ public class TokenAnnotator extends JCasAnnotator_ImplBase {
           annotation.setEnd(w.endPosition());
           annotation.setCasProcessorId("TokenAnnotator");
           annotation.setConfidence(1.0);
-          annotation.addToIndexes();          
+          annotation.addToIndexes();
         }
       }
 
     }
   }
 }
-  

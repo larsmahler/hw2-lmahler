@@ -1,11 +1,21 @@
 package qa;
 
 /*
- * Put notes here.
+ * The AnswerScorer loops through each Question (there should only be one in each document). For
+ * each Question, the AnswerScorer loops through the candidate Answer annotations and scores them.
+ * 
+ * For this implementation, the scoring methodology is a simple NGram overlap rule: for each NGram
+ * contained in the candidate Answer, the AnswerScorer looks to see if that NGram is also contained
+ * in the Question. If so, it increments a “matching_ngrams” counter by 1. The final score feature
+ * is simply the count of “matching_ngrams” / the total number of n-grams contained in the candidate
+ * Answer.
+ * 
+ * When the score is returned, a new AnswerScore annotation is created. This annotation spans the
+ * text of the answer sentence. In addition, it has a score feature (that stores the score), as well
+ * as an answer feature (that has a pointer to the Answer object that was used during scoring).
  */
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
@@ -17,7 +27,18 @@ import org.apache.uima.cas.text.*;
 import edu.cmu.deiis.types.*;
 
 /**
- * The TokenAnnotator annotates each token within each sentence (Question or Answer). 
+ * The AnswerScorer loops through each Question (there should only be one in each document). For
+ * each Question, the AnswerScorer loops through the candidate Answer annotations and scores them.
+ * 
+ * For this implementation, the scoring methodology is a simple NGram overlap rule: for each NGram
+ * contained in the candidate Answer, the AnswerScorer looks to see if that NGram is also contained
+ * in the Question. If so, it increments a “matching_ngrams” counter by 1. The final score feature
+ * is simply the count of “matching_ngrams” / the total number of n-grams contained in the candidate
+ * Answer.
+ * 
+ * When the score is returned, a new AnswerScore annotation is created. This annotation spans the
+ * text of the answer sentence. In addition, it has a score feature (that stores the score), as well
+ * as an answer feature (that has a pointer to the Answer object that was used during scoring).
  */
 public class AnswerScorer extends JCasAnnotator_ImplBase {
 
@@ -43,13 +64,13 @@ public class AnswerScorer extends JCasAnnotator_ImplBase {
         qngMap.put(ngramText, count + 1);
       }
     }
-    
+
     // Iterate over Answers and measure closeness
     AnnotationIndex aIndex = aJCas.getAnnotationIndex(Answer.type);
     FSIterator<AnnotationFS> aIter = aIndex.iterator();
     while (aIter.hasNext()) {
       AnnotationFS a = (Answer) aIter.next();
-      
+
       // Within each Answer, count how many of its NGrams
       // exactly match NGrams in the Question
       int matching_ngrams = 0;
@@ -64,7 +85,7 @@ public class AnswerScorer extends JCasAnnotator_ImplBase {
           matching_ngrams += 1;
         }
       }
-      
+
       // Create AnswerScore and insert into index
       AnswerScore annotation = new AnswerScore(aJCas);
       annotation.setBegin(a.getBegin());
@@ -74,10 +95,8 @@ public class AnswerScorer extends JCasAnnotator_ImplBase {
       annotation.setConfidence(1);
       annotation.setAnswer((Answer) a);
       annotation.addToIndexes();
-      
+
     }
-    
+
   }
 }
-  
-  

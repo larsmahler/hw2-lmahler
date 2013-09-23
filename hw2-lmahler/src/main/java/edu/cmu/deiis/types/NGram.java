@@ -11,8 +11,8 @@ import org.apache.uima.jcas.cas.FSArray;
 
 
 /** 
- * Updated by JCasGen Sun Sep 22 20:48:51 EDT 2013
- * XML source: C:/Users/Lars/git/hw2-lmahler/hw2-lmahler/src/main/resources/descriptors/hw2-lmahler-aae.xml
+ * Updated by JCasGen Mon Sep 23 00:12:07 EDT 2013
+ * XML source: C:/Users/Lars/git/hw2-lmahler/hw2-lmahler/src/main/resources/descriptors/deiis_types.xml
  * @generated */
 public class NGram extends Annotation {
   /** @generated
@@ -65,14 +65,14 @@ public class NGram extends Annotation {
   //*--------------*
   //* Feature: elements
 
-  /** getter for elements - gets 
+  /** getter for elements - gets An array containing pointers to the individual elements contained within the NGram.
    * @generated */
   public FSArray getElements() {
     if (NGram_Type.featOkTst && ((NGram_Type)jcasType).casFeat_elements == null)
       jcasType.jcas.throwFeatMissing("elements", "edu.cmu.deiis.types.NGram");
     return (FSArray)(jcasType.ll_cas.ll_getFSForRef(jcasType.ll_cas.ll_getRefValue(addr, ((NGram_Type)jcasType).casFeatCode_elements)));}
     
-  /** setter for elements - sets  
+  /** setter for elements - sets An array containing pointers to the individual elements contained within the NGram. 
    * @generated */
   public void setElements(FSArray v) {
     if (NGram_Type.featOkTst && ((NGram_Type)jcasType).casFeat_elements == null)
@@ -99,14 +99,14 @@ public class NGram extends Annotation {
   //*--------------*
   //* Feature: elementType
 
-  /** getter for elementType - gets 
+  /** getter for elementType - gets The type of the elements contained in the elements field.
    * @generated */
   public String getElementType() {
     if (NGram_Type.featOkTst && ((NGram_Type)jcasType).casFeat_elementType == null)
       jcasType.jcas.throwFeatMissing("elementType", "edu.cmu.deiis.types.NGram");
     return jcasType.ll_cas.ll_getStringValue(addr, ((NGram_Type)jcasType).casFeatCode_elementType);}
     
-  /** setter for elementType - sets  
+  /** setter for elementType - sets The type of the elements contained in the elements field. 
    * @generated */
   public void setElementType(String v) {
     if (NGram_Type.featOkTst && ((NGram_Type)jcasType).casFeat_elementType == null)
@@ -117,14 +117,14 @@ public class NGram extends Annotation {
   //*--------------*
   //* Feature: ngramOrder
 
-  /** getter for ngramOrder - gets Order / degree of ngram: 1 (unigram), 2 (bigram), 3 (trigram), and so on.
+  /** getter for ngramOrder - gets The order (or degree) of the ngram: 1 (unigram), 2 (bigram), 3 (trigram), and so on.
    * @generated */
   public int getNgramOrder() {
     if (NGram_Type.featOkTst && ((NGram_Type)jcasType).casFeat_ngramOrder == null)
       jcasType.jcas.throwFeatMissing("ngramOrder", "edu.cmu.deiis.types.NGram");
     return jcasType.ll_cas.ll_getIntValue(addr, ((NGram_Type)jcasType).casFeatCode_ngramOrder);}
     
-  /** setter for ngramOrder - sets Order / degree of ngram: 1 (unigram), 2 (bigram), 3 (trigram), and so on. 
+  /** setter for ngramOrder - sets The order (or degree) of the ngram: 1 (unigram), 2 (bigram), 3 (trigram), and so on. 
    * @generated */
   public void setNgramOrder(int v) {
     if (NGram_Type.featOkTst && ((NGram_Type)jcasType).casFeat_ngramOrder == null)
@@ -135,14 +135,14 @@ public class NGram extends Annotation {
   //*--------------*
   //* Feature: source
 
-  /** getter for source - gets Describes the source of the NGram (i.e. was the NGram created from Question text or Answer text?).
+  /** getter for source - gets The source of the NGram (i.e. was the NGram created from Question text or Answer text?).
    * @generated */
   public String getSource() {
     if (NGram_Type.featOkTst && ((NGram_Type)jcasType).casFeat_source == null)
       jcasType.jcas.throwFeatMissing("source", "edu.cmu.deiis.types.NGram");
     return jcasType.ll_cas.ll_getStringValue(addr, ((NGram_Type)jcasType).casFeatCode_source);}
     
-  /** setter for source - sets Describes the source of the NGram (i.e. was the NGram created from Question text or Answer text?). 
+  /** setter for source - sets The source of the NGram (i.e. was the NGram created from Question text or Answer text?). 
    * @generated */
   public void setSource(String v) {
     if (NGram_Type.featOkTst && ((NGram_Type)jcasType).casFeat_source == null)
