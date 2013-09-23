@@ -4,25 +4,15 @@ package qa;
  * Put notes here.
  */
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
 
-import org.apache.uima.UimaContext;
-import org.apache.uima.analysis_component.AnalysisComponent;
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.jcas.*;
-import org.apache.uima.jcas.cas.FSArray;
 import org.apache.uima.cas.*;
 import org.apache.uima.cas.text.*;
-import org.apache.uima.resource.ResourceInitializationException;
 
 import edu.cmu.deiis.types.*;
 
@@ -52,13 +42,6 @@ public class AnswerScorer extends JCasAnnotator_ImplBase {
         int count = qngMap.containsKey(ngramText) ? qngMap.get(ngramText) : 0;
         qngMap.put(ngramText, count + 1);
       }
-    }
-    
-    Iterator iter = qngMap.entrySet().iterator();
-    
-    while (iter.hasNext()) {
-      Map.Entry mEntry = (Map.Entry) iter.next();
-      System.out.println(mEntry.getKey() + " : " + mEntry.getValue());
     }
     
     // Iterate over Answers and measure closeness

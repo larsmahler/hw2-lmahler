@@ -36,6 +36,9 @@
   <delegateAnalysisEngine key="AnswerScorerDescriptor">
       <import name="descriptors.AnswerScorerDescriptor"/>
     </delegateAnalysisEngine>
+  <delegateAnalysisEngine key="EvaluatorDescriptor">
+      <import name="descriptors.EvaluatorDescriptor"/>
+    </delegateAnalysisEngine>
   </delegateAnalysisEngineSpecifiers>
   <analysisEngineMetaData>
 		<name>HW2 - Aggregate Analysis Engine</name>
@@ -51,6 +54,7 @@
         <node>TokenAnnotatorDescriptor</node>
       <node>NgramAnnotatorDescriptor</node>
       <node>AnswerScorerDescriptor</node>
+      <node>EvaluatorDescriptor</node>
       </fixedFlow>
     </flowConstraints>
     <fsIndexCollection/>
