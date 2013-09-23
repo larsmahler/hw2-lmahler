@@ -41,7 +41,6 @@ public class NgramAnnotator extends JCasAnnotator_ImplBase {
   // * process *
   // *************************************************************
   public void process(JCas aJCas) throws AnalysisEngineProcessException {
-    String docText = aJCas.getDocumentText();
  
     for (int ngo : ngramOrders) {
       // 1) Iterate over Questions first, and create tokens

@@ -22,53 +22,41 @@
 <!-- Descriptor for TestElementAnnotator. -->
 <analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
 	<frameworkImplementation>org.apache.uima.java</frameworkImplementation>
-	<primitive>false</primitive>
-	<delegateAnalysisEngineSpecifiers>
-    <delegateAnalysisEngine key="TestElementAnnotatorDescriptor">
-      <import name="descriptors.TestElementAnnotatorDescriptor"/>
-    </delegateAnalysisEngine>
-    <delegateAnalysisEngine key="TokenAnnotatorDescriptor">
-      <import name="descriptors.TokenAnnotatorDescriptor"/>
-    </delegateAnalysisEngine>
-  <delegateAnalysisEngine key="NgramAnnotatorDescriptor">
-      <import name="descriptors.NgramAnnotatorDescriptor"/>
-    </delegateAnalysisEngine>
-  <delegateAnalysisEngine key="AnswerScorerDescriptor">
-      <import name="descriptors.AnswerScorerDescriptor"/>
-    </delegateAnalysisEngine>
-  </delegateAnalysisEngineSpecifiers>
-  <analysisEngineMetaData>
-		<name>HW2 - Aggregate Analysis Engine</name>
-		<description>This is the aggregate analysis engine for the HW#2 Question Answering pipeline. For details regarding the flow, see the "Aggregate" tab. For details regarding any individual AE, please see the notes contained within that AE's descriptor.</description>
+	<primitive>true</primitive>
+	<annotatorImplementationName>qa.AnswerScorer</annotatorImplementationName>
+
+	<analysisEngineMetaData>
+		<name>AnswerScorerDescriptor</name>
+		<description>The Answer Scorer scores each possible answer, and then generates an AnswerScore reflecting the confidence of that answer.</description>
 		<version>1.0</version>
 		<vendor>Lars Mahler</vendor>
 		
-		<configurationParameters searchStrategy="language_fallback"/>
+		<configurationParameters/>
     <configurationParameterSettings/>
-    <flowConstraints>
-      <fixedFlow>
-        <node>TestElementAnnotatorDescriptor</node>
-        <node>TokenAnnotatorDescriptor</node>
-      <node>NgramAnnotatorDescriptor</node>
-      <node>AnswerScorerDescriptor</node>
-      </fixedFlow>
-    </flowConstraints>
+    <!-- TypeSystem Definition -->
+		<typeSystemDescription>
+			<imports>
+				<import location="deiis_types.xml"/>
+			</imports>
+		</typeSystemDescription>
+		
+		<typePriorities/>
     <fsIndexCollection/>
     <!-- Capabilities: Inputs, Outputs, and Preconditions -->
 		<capabilities>
 			<capability>
-        <inputs/>
-        <outputs>
-          <type allAnnotatorFeatures="true">edu.cmu.deiis.types.Token</type>
-          <type allAnnotatorFeatures="true">edu.cmu.deiis.types.Question</type>
-          <type allAnnotatorFeatures="true">edu.cmu.deiis.types.NGram</type>
-          <type allAnnotatorFeatures="true">edu.cmu.deiis.types.AnswerScore</type>
+				<inputs>
           <type allAnnotatorFeatures="true">edu.cmu.deiis.types.Answer</type>
-          <type allAnnotatorFeatures="true">edu.cmu.deiis.types.Annotation</type>
+          <type allAnnotatorFeatures="true">edu.cmu.deiis.types.Question</type>
+        <type allAnnotatorFeatures="true">edu.cmu.deiis.types.Token</type>
+          <type allAnnotatorFeatures="true">edu.cmu.deiis.types.NGram</type>
+        </inputs>
+				<outputs>
+          <type allAnnotatorFeatures="true">edu.cmu.deiis.types.AnswerScore</type>
         </outputs>
-        <languagesSupported/>
+			<languagesSupported/>
       </capability>
-    </capabilities>
+		</capabilities>
 		<operationalProperties>
 			<modifiesCas>true</modifiesCas>
 			<multipleDeploymentAllowed>true</multipleDeploymentAllowed>
