@@ -27,7 +27,19 @@
 
 	<analysisEngineMetaData>
 		<name>NgramAnnotatorDescriptor</name>
-		<description>The NgramAnnotator converts sequences of Token annotations into Ngrams. A parameter allows the user to specify the degree  / cardinality of the ngram. For example: 1 (unigram), 2 (bigram), 3 (trigram), etc.</description>
+		<description>The NgramAnnotator converts sequences of Token annotations into Ngrams. 
+
+A parameter allows the user to specify the which NGram orders will be created. 
+ - Ex: 1: setting the parameter to "1,2,3" will create unigrams, bigrams, and trigrams. 
+ - Ex: 2: setting the parameter to "2,4" would create bigrams and 4-grams.
+
+Each time an NGram annotation is created:
+- The start feature is set equal to the start of the first Token in the NGram.
+- The end feature is set equal to the end of the last Token in the NGram.
+- The elements feature is an array that contains pointers to each Token in the NGram.
+- The elementsType feature is set to “Token”.  (Note: this could become parameterized in future releases, if types other than Tokens are used in NGram models)
+- The ngramOrder feature tells whether the NGram is a unigram (“1”), bigram (“2”), etc – this may be used in future releases if I develop a machine learning model that weights the NGrams differently.
+- The source feature indicates whether the NGram came from a Question or an Answer. This is used in downstream processing to compare Answer NGrams against their corresponding Question NGrams.</description>
 		<version>1.0</version>
 		<vendor>Lars Mahler</vendor>
 		

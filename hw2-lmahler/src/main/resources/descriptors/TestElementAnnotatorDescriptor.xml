@@ -27,9 +27,9 @@
 
 	<analysisEngineMetaData>
 		<name>TestElementAnnotatorDescriptor</name>
-		<description>The TestElementAnnotator annotates each input document. For each line of the the input file, it determines if that line is a Question, or an Answer, and annotates the span accordingly.
+		<description>The TestElementAnnotator annotates each input document. For each line of the input file, it determines if that line is a Question, or an Answer, and annotates the span accordingly.
 
-For each Answer annotation, the TestElementAnnotator will set its isCorrect feature to yes / no (1/0) depending on whether it is a correct answer or not.
+For each Answer annotation, the TestElementAnnotator sets the isCorrect feature to yes / no (1/0) based upon the flag given in the input file.
 </description>
 		<version>1.0</version>
 		<vendor>Lars Mahler</vendor>

@@ -27,7 +27,11 @@
 
 	<analysisEngineMetaData>
 		<name>AnswerScorerDescriptor</name>
-		<description>The Answer Scorer scores each possible answer, and then generates an AnswerScore reflecting the confidence of that answer.</description>
+		<description>The AnswerScorer loops through each Question (there should only be one in each document). For each Question, the AnswerScorer loops through the candidate Answer annotations and scores them.
+
+For this implementation, the scoring methodology is a simple NGram overlap rule: for each NGram contained in the candidate Answer, the AnswerScorer looks to see if that NGram is also contained in the Question. If so, it increments a “matching_ngrams” counter by 1. The final score feature is simply the count of “matching_ngrams” / the total number of n-grams contained in the candidate Answer.
+
+When the score is returned, a new AnswerScore annotation is created. This annotation spans the text of the answer sentence. In addition, it has a score feature (that stores the score), as well as an answer feature (that has a pointer to the Answer object that was used during scoring).</description>
 		<version>1.0</version>
 		<vendor>Lars Mahler</vendor>
 		

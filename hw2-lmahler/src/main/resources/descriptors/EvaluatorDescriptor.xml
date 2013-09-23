@@ -23,11 +23,17 @@
 <analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
 	<frameworkImplementation>org.apache.uima.java</frameworkImplementation>
 	<primitive>true</primitive>
-	<annotatorImplementationName>qa.TokenAnnotator</annotatorImplementationName>
+	<annotatorImplementationName>qa.Evaluator</annotatorImplementationName>
 
 	<analysisEngineMetaData>
-		<name>TokenAnnotatorDescriptor</name>
-		<description>The TokenAnnotator converts each Question and Answer annotation into a set of Token annotations. The Token annotations are then used in downstream processing.</description>
+		<name>EvaluatorDescriptor</name>
+		<description>The Evaluator evaluates the performance of the AAE by comparing the system outputs (AnswerScore.score values) with the gold standard outputs. It measures precision by doing the following:
+  1) Ranks the Answers according to AnswerScore.score (descending).
+  2) Selects the top N Answers (where N = the total number of correct answers that were possible for that Question).
+  3) Measures precision by computing how many of the top N ranked Answers were actually correct (based upon the gold standard).
+
+After performing these calculations, it prints the results to screen.
+</description>
 		<version>1.0</version>
 		<vendor>Lars Mahler</vendor>
 		
@@ -46,12 +52,9 @@
 		<capabilities>
 			<capability>
 				<inputs>
-          <type allAnnotatorFeatures="true">edu.cmu.deiis.types.Answer</type>
-          <type allAnnotatorFeatures="true">edu.cmu.deiis.types.Question</type>
+          <type allAnnotatorFeatures="true">edu.cmu.deiis.types.AnswerScore</type>
         </inputs>
-				<outputs>
-          <type allAnnotatorFeatures="true">edu.cmu.deiis.types.Token</type>
-        </outputs>
+				<outputs/>
 			<languagesSupported/>
       </capability>
 		</capabilities>
